@@ -13,6 +13,11 @@ MIDIファイル再生DEMOです。
 - 実行動画  
 [![UnityMIDI_DEMO_thumbnail](https://user-images.githubusercontent.com/17695962/83125754-e44dab00-a112-11ea-8109-a8b2e7dfdf6d.png)](https://twitter.com/RerykA99/status/1265940146014150656)  
   
+## 後々やるかも？(2020/05/28)  
+MIDIファイルの管理としてエディタでは「Assets/StreamingAssets/MIDI」配下に、Androidでは  
+「～/Android/data/アプリ名/files/MIDI」配下に置いて使っています。しかし、今はファイルを  
+自動で配置してくれる処理はありません。後で追加しないとなぁ・・・。  
+  
 ## 参照  
 - MIDI音源ファイル  
 [フリーMIDI／MP3のフリーダウンロード ｜ MIFUNO STUDIO](http://www.mifunostudio.com/freemidimp3/)  
