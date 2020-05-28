@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 202825332}
   - component: {fileID: 202825331}
   m_Layer: 5
-  m_Name: MidiFilePathPanel
+  m_Name: MidFolderPathPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -671,7 +671,7 @@ GameObject:
   - component: {fileID: 230533400}
   - component: {fileID: 230533399}
   m_Layer: 5
-  m_Name: MidiFilePathText
+  m_Name: MidiFolderPathText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1029,7 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c215588808f82c742863fd7d7508dd33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  midiFilePathText: {fileID: 230533399}
+  midiFolderPathText: {fileID: 0}
   midiFileDropdown: {fileID: 518721408}
   midiPlayer: {fileID: 1442372819}
 --- !u!114 &518721408
@@ -2260,7 +2260,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1021352742}
-        m_MethodName: OnClickPlayButton
+        m_MethodName: OnClickAudioButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
