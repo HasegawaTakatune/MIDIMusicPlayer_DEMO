@@ -32,39 +32,39 @@
 ＃自動生成されたVS / MD / Consuloソリューションおよびプロジェクトファイル
 ExportedObj /
 .consulo /
-* .csproj
-* .unityproj
-* .sln
-* .suo
-* .tmp
-* .user
-* .userprefs
-* .pidb
-* .booproj
-* .svd
-* .pdb
-* .mdb
-* .opendb
-* .VC.db
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
 
 ＃ Unity3Dで生成されたメタファイル
-* .pidb.meta
-* .pdb.meta
-* .mdb.meta
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
 
-＃クラッシュレポートで生成されたUnity3Dファイル
+＃ クラッシュレポートで生成されたUnity3Dファイル
 sysinfo.txt
 
-＃ビルド
-* .apk
-* .aab
-* .unitypackage
+＃ ビルド
+*.apk
+*.aab
+*.unitypackage
 
 ＃ Crashlytics生成されたファイル
 crashlytics-build.properties
 
 ＃パックされたアドレス指定可能
-/ [ Aa ] ssets / [ Aa ] ddressable [ Aa ] ssets [ Dd ] ata / * / * .bin *
+/ [ Aa ] ssets / [ Aa ] ddressable [ Aa ] ssets [ Dd ] ata / * / *.bin *
 
 ＃自動生成された一時的なAndroidアセット
 / [ Aa ] ssets / [ Ss ] treamingAssets / aa.meta
