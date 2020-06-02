@@ -36,3 +36,7 @@ MIDIファイルの管理としてエディタでは「Assets/StreamingAssets/MI
   
 - チャネル数の設定についての参考  
 [MIDIファイルの基礎知識](http://hp.vector.co.jp/authors/VA029289/midi1.html)  
+
+## 環境
+- Unity 2019.3.13f1
+- Visual Studio 2017
