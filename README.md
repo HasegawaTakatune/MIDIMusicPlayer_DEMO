@@ -40,3 +40,4 @@ MIDIファイルの管理としてエディタでは「Assets/StreamingAssets/MI
 ## 環境
 - Unity 2019.3.13f1
 - Visual Studio 2017
+- C#
