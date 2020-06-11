@@ -30,6 +30,11 @@ namespace UnityMidi
         int bufferHead;
         float[] currentBuffer;
 
+        public delegate void CallBack();
+        CallBack ResetSynthesizerCallback;
+        public void AddResetSynthesuzerCallback(CallBack callBack) { ResetSynthesizerCallback += callBack; }
+        public void RemoveResetSynthesuzerCallback(CallBack callBack) { ResetSynthesizerCallback -= callBack; }
+
         public AudioSource AudioSource { get { return audioSource; } }
 
         public MidiFileSequencer Sequencer { get { return sequencer; } }
@@ -40,6 +45,9 @@ namespace UnityMidi
 
         public void Awake()
         {
+            if (Application.platform == RuntimePlatform.Android)
+                StreamingAssetsSetupByAndroid.setup();
+
             synthesizer = new Synthesizer(sampleRate, channel, bufferSize, 1);
             sequencer = new MidiFileSequencer(synthesizer);
             audioSource = GetComponent<AudioSource>();
@@ -122,6 +130,9 @@ namespace UnityMidi
             sequencer = new MidiFileSequencer(synthesizer);
             LoadBank(new PatchBank(bankSource));
             LoadMidi(new MidiFile(midiSource));
+
+            ResetSynthesizerCallback();
         }
+
     }
 }

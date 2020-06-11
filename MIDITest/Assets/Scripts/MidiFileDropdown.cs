@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityMidi;
 
 /// <summary>
 /// MIDIファイルの選択を制御する
@@ -11,7 +12,8 @@ public class MidiFileDropdown : MonoBehaviour
     /// <summary>
     /// MIDIディレクトリ
     /// </summary>
-    private const string DIRECTORY_MIDI = "MIDI/";
+    //private const string DIRECTORY_MIDI = "MIDI/";
+
     /// <summary>
     /// MIDI拡張子
     /// </summary>
@@ -28,7 +30,7 @@ public class MidiFileDropdown : MonoBehaviour
     /// <summary>
     /// MIDIプレイヤ
     /// </summary>
-    [SerializeField] private UnityMidi.MidiPlayer midiPlayer = default;
+    [SerializeField] private MidiPlayer midiPlayer = default;
 
     /// <summary>
     /// フォルダパス
@@ -40,7 +42,7 @@ public class MidiFileDropdown : MonoBehaviour
     /// </summary>
     private void Reset()
     {
-        midiPlayer = GameObject.Find("MidiPlayer").GetComponent<UnityMidi.MidiPlayer>();
+        midiPlayer = GameObject.Find("MidiPlayer").GetComponent<MidiPlayer>();
         midiFolderPathText = GameObject.Find("MidiFolderPathText").GetComponent<Text>();
 
         midiFileDropdown = GetComponent<Dropdown>();
@@ -53,11 +55,14 @@ public class MidiFileDropdown : MonoBehaviour
     private void Start()
     {
         // プラットフォーム別にフォルダパスを設定する
-#if UNITY_ANDROID && !UNITY_EDITOR
-        FolderPath = Application.persistentDataPath + "/MIDI";
-#else
-        FolderPath = Application.streamingAssetsPath + "/MIDI";
-#endif
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            FolderPath = Application.persistentDataPath;
+        }
+        else
+        {
+            FolderPath = Application.streamingAssetsPath;
+        }
         midiFolderPathText.text = FolderPath;
         Init();
     }
@@ -84,7 +89,7 @@ public class MidiFileDropdown : MonoBehaviour
     /// <param name="input"></param>
     public void SelectedMidiFile(Dropdown input)
     {
-        midiPlayer.midiSource.streamingAssetPath = DIRECTORY_MIDI + input.options[input.value].text + EXTENSION_MIDI;
+        midiPlayer.midiSource.streamingAssetPath = input.options[input.value].text + EXTENSION_MIDI;
         midiPlayer.ResetSynthesizer();
     }
 }

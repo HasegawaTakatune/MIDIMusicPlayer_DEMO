@@ -143,7 +143,7 @@ namespace AudioSynthesis.Sequencer
                 synth.ResetSynthControls();
                 return;
             }
-            int newMSize = (int)(synth.MicroBufferSize * playbackrate);       
+            int newMSize = (int)(synth.MicroBufferSize * playbackrate);
             for (int x = 0; x < synth.midiEventCounts.Length; x++)
             {
                 sampleTime += newMSize;
@@ -164,7 +164,7 @@ namespace AudioSynthesis.Sequencer
             //Converts midi to sample based format for easy sequencing
             double BPM = 120.0;
             //Combine all tracks into 1 track that is organized from lowest to highest absolute time
-            if(midiFile.Tracks.Length > 1 || midiFile.Tracks[0].EndTime == 0)
+            if (midiFile.Tracks.Length > 1 || midiFile.Tracks[0].EndTime == 0)
                 midiFile.CombineTracks();
             mdata = new MidiMessage[midiFile.Tracks[0].MidiEvents.Length];
             //Convert delta time to sample time
@@ -191,7 +191,7 @@ namespace AudioSynthesis.Sequencer
             {
                 if (mdata[eventIndex].command != 0x90)
                 {
-                    MidiMessage m = mdata[eventIndex]; 
+                    MidiMessage m = mdata[eventIndex];
                     synth.ProcessMidiMessage(m.channel, m.command, m.data1, m.data2);
                 }
                 eventIndex++;

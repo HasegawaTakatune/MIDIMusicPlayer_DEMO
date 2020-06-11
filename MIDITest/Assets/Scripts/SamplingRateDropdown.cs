@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityMidi;
 
 /// <summary>
 /// サンプリングレートの選択を制御する
@@ -14,7 +15,7 @@ public class SamplingRateDropdown : MonoBehaviour
     /// <summary>
     /// MIDIプレイヤ
     /// </summary>
-    [SerializeField] private UnityMidi.MidiPlayer midiPlayer = default;
+    [SerializeField] private MidiPlayer midiPlayer = default;
 
     /// <summary>
     /// レート配列
@@ -30,7 +31,7 @@ public class SamplingRateDropdown : MonoBehaviour
     /// </summary>
     private void Reset()
     {
-        midiPlayer = GameObject.Find("MidiPlayer").GetComponent<UnityMidi.MidiPlayer>();
+        midiPlayer = GameObject.Find("MidiPlayer").GetComponent<MidiPlayer>();
 
         rateDropdown = GetComponent<Dropdown>();
         rateDropdown.ClearOptions();
@@ -41,6 +42,14 @@ public class SamplingRateDropdown : MonoBehaviour
             options.Add(rate[i].ToString().PadRight(7, ' ') + annotation[i].ToString());
 
         rateDropdown.AddOptions(options);
+    }
+
+    /// <summary>
+    /// 初期イベント
+    /// </summary>
+    private void Start()
+    {
+        rateDropdown.value = rateDropdown.options.Count - 1;
     }
 
     /// <summary>

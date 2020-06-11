@@ -5,6 +5,7 @@ ScriptsOnlyBuild:
     - ChannelInputField
     - Log
     - MidiFileDropdown
+    - MusicTime
     - SamplingRateDropdown
     - UnityMidi.MidiPlayer
     Unity.Rider.Editor.dll:
@@ -82,17 +83,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12426}
     - Class: 114
-      Script: {instanceID: 12738}
+      Script: {instanceID: 12470}
     - Class: 114
-      Script: {instanceID: 12806}
+      Script: {instanceID: 12740}
     - Class: 114
-      Script: {instanceID: 13122}
+      Script: {instanceID: 12808}
     - Class: 114
-      Script: {instanceID: 13138}
+      Script: {instanceID: 13124}
     - Class: 114
-      Script: {instanceID: 13152}
+      Script: {instanceID: 13140}
     - Class: 114
-      Script: {instanceID: 18616}
+      Script: {instanceID: 13154}
+    - Class: 114
+      Script: {instanceID: 13190}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -352,7 +355,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 4e022f9df644de08ba75f9e814dc6ae1
+      Hash: fd0d886681f659018ad436a4c0f7f70b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MidiFileDropdown
@@ -398,6 +401,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_FontAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 997f89b6b0b658a143e8dcb10787e892
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Log
   - hash:
       serializedVersion: 2
       Hash: e1300922cc039f41ab46a47f4cb05898
@@ -556,16 +565,16 @@ ScriptsOnlyBuild:
     className: ToggleGroup
   - hash:
       serializedVersion: 2
+      Hash: f8625e0fe7282308af318a7a5465a0ac
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MusicTime
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 997f89b6b0b658a143e8dcb10787e892
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Log
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

@@ -1,9 +1,70 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using System.IO;
 using AudioSynthesis;
 
 namespace UnityMidi
 {
+    /// <summary>
+    /// アセットのセットアップ（Android版）
+    /// </summary>
+    public static class StreamingAssetsSetupByAndroid
+    {
+        /// <summary>
+        /// 拡張子.bank
+        /// </summary>
+        private static readonly string Extension_Bank = ".bank";
+        /// <summary>
+        /// 拡張子.mid
+        /// </summary>
+        private static readonly string Extension_Midi = ".mid";
+        /// <summary>
+        /// Bankファイル名
+        /// </summary>
+        public static string bankFile = "GMBank";
+        /// <summary>
+        /// MIDIファイル名
+        /// </summary>
+        public static string[] midiFiles = new string[] { "AllSeasons", "FineDays" };
+
+        /// <summary>
+        /// セットアップ
+        /// </summary>
+        public static void setup()
+        {
+            // ファイルパスリスト
+            List<string> filePaths = new List<string>() { };
+
+            // 参照先に目的のファイルがなければファイルパスリストに記載
+            if (!File.Exists(Application.persistentDataPath + "/" + bankFile + Extension_Bank))
+                filePaths.Add(bankFile + Extension_Bank);
+
+            for (int i = 0; i < midiFiles.Length; i++)
+                if (!File.Exists(Application.persistentDataPath + "/" + midiFiles[i] + Extension_Midi))
+                    filePaths.Add(midiFiles[i] + Extension_Midi);
+
+            // ファイルパスリストに記載があればファイルのコピーを開始
+            if (0 < filePaths.Count)
+                FileCopyFromStreamingToPersistent(filePaths);
+
+        }
+
+        /// <summary>
+        /// ファイルコピー
+        /// </summary>
+        /// <param name="filePaths"></param>
+        public static void FileCopyFromStreamingToPersistent(List<string> filePaths)
+        {
+            // StreamingAssetsからPersistentDataにファイルをコピーする
+            foreach (string path in filePaths)
+            {
+                WWW www = new WWW(Application.streamingAssetsPath + "/" + path);
+                while (!www.isDone) { }
+                File.WriteAllBytes(Application.persistentDataPath + "/" + path, www.bytes);
+            }
+        }
+    }
+
     [System.Serializable]
     public class StreamingAssetResouce : IResource
     {
@@ -33,33 +94,15 @@ namespace UnityMidi
         {
             string streamingPath = string.Empty;
 
-            //streamingPath = Application.streamingAssetsPath + streamingAssetPath;
-            //WWW www = new WWW(streamingPath);
-
-            //while (!www.isDone) { }
-            //AssetBundle bundle = www.assetBundle;
-
-            //streamingPath = Application.persistentDataPath + "/files/" + streamingAssetPath;
-            //using (BinaryWriter writer = new BinaryWriter(new FileStream(streamingPath, FileMode.Create)))
-            //{
-            //    writer.Write(www.assetBundle);
-
-            //    writer.Flush();
-            //}
-            //return File.OpenRead(streamingPath);
-
-#if UNITY_ANDROID && !UNITY_EDITOR
-            
-            streamingPath = Application.persistentDataPath + "/" + streamingAssetPath;
-            //streamingPath = Application.streamingAssetsPath + "/" + streamingAssetPath;
-            return File.OpenRead(streamingPath);
-
-            //streamingPath = "jar:file://" + Application.dataPath + "!/assets/" + streamingAssetPath;
-            //streamingPath = Path.Combine(Application.streamingAssetsPath, streamingAssetPath);
-            //streamingPath = "file://" + Path.Combine(Application.persistentDataPath, streamingAssetPath);
-#else
-            streamingPath = Path.Combine(Application.streamingAssetsPath, streamingAssetPath);
-#endif
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                streamingPath = Application.persistentDataPath + "/" + streamingAssetPath;
+                return File.OpenRead(streamingPath);
+            }
+            else
+            {
+                streamingPath = Path.Combine(Application.streamingAssetsPath, streamingAssetPath);
+            }
             Debug.Log("Streaming path : " + streamingAssetPath);
             return File.OpenRead(streamingPath);
         }

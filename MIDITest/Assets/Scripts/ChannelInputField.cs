@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityMidi;
 
 /// <summary>
 /// チャネル設定を制御する
@@ -22,14 +23,14 @@ public class ChannelInputField : MonoBehaviour
     /// <summary>
     /// MIDIプレイヤ
     /// </summary>
-    [SerializeField] private UnityMidi.MidiPlayer midiPlayer = default;
+    [SerializeField] private MidiPlayer midiPlayer = default;
 
     /// <summary>
     /// リセットイベント
     /// </summary>
     private void Reset()
     {
-        midiPlayer = GameObject.Find("MidiPlayer").GetComponent<UnityMidi.MidiPlayer>();
+        midiPlayer = GameObject.Find("MidiPlayer").GetComponent<MidiPlayer>();
         channelInputField = GetComponent<InputField>();
     }
 
