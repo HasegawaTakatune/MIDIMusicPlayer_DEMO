@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityMidi;
-using AudioSynthesis.Sequencer;
 
 /// <summary>
 /// テンポ変更を制御する
@@ -21,10 +20,6 @@ public class TempoChanger : MonoBehaviour
     /// テンポテキスト
     /// </summary>
     [SerializeField] Text tempoText = default;
-    /// <summary>
-    /// シーケンサ
-    /// </summary>
-    private MidiFileSequencer sequencer;
 
     /// <summary>
     /// リセットイベント
@@ -40,9 +35,8 @@ public class TempoChanger : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        sequencer = midiPlayer.Sequencer;
-
-        tempoText.text = TEMPO + sequencer.PlaySpeed.ToString();
+        //tempoText.text = TEMPO + sequencer.PlaySpeed.ToString();
+        tempoText.text = TEMPO + midiPlayer.Sequencer.PlaySpeed.ToString();
     }
 
     /// <summary>
@@ -57,6 +51,13 @@ public class TempoChanger : MonoBehaviour
         midiPlayer.Sequencer.PlaySpeed = value;
 
         tempoText.text = TEMPO + midiPlayer.Sequencer.PlaySpeed.ToString();
+
+        //double value = midiPlayer.Sequencer.BPM;
+
+        //if (value < 300) value++;
+        //midiPlayer.Sequencer.BPM = value;
+
+        //tempoText.text = TEMPO + midiPlayer.Sequencer.BPM.ToString();
     }
 
     /// <summary>
@@ -70,5 +71,12 @@ public class TempoChanger : MonoBehaviour
         midiPlayer.Sequencer.PlaySpeed = value;
 
         tempoText.text = TEMPO + midiPlayer.Sequencer.PlaySpeed.ToString();
+
+        //double value = midiPlayer.Sequencer.BPM;
+
+        //if (30 < value) value--;
+        //midiPlayer.Sequencer.BPM = value;
+
+        //tempoText.text = TEMPO + midiPlayer.Sequencer.BPM.ToString();
     }
 }

@@ -92,7 +92,7 @@ public class PlaybackButton : MonoBehaviour
             endTime = Time.time;
             playbackTime = endTime - startTime;
             if (baseTime <= 0) baseTime = playbackTime;
-            Debug.Log("End time[" + endTime + "]  Play time [" + playbackTime + "]  <" + (Mathf.Floor((baseTime / playbackTime) * 100) * 0.01) + "倍速>");
+            Debug.Log("End time[" + endTime + "]  Play time [" + playbackTime + "]  <" + (Mathf.Floor((baseTime / playbackTime) * 1000) * 0.001) + "倍速>");
         }
 
         // 既に停止していたら処理を抜ける

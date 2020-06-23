@@ -56,6 +56,8 @@ namespace AudioSynthesis.Sequencer
             set { playbackrate = SynthHelper.Clamp(value, .125, 8.0); }
         }
 
+        public double BPM { get; private set; }
+
         //--Public Methods
         public MidiFileSequencer(Synthesizer synth)
         {
@@ -75,7 +77,7 @@ namespace AudioSynthesis.Sequencer
                 return false;
             LoadMidiFile(midiFile);
             return true;
-        }
+        }       
         public bool UnloadMidi()
         {
             if (playing == true)
@@ -162,7 +164,8 @@ namespace AudioSynthesis.Sequencer
         private void LoadMidiFile(MidiFile midiFile)
         {
             //Converts midi to sample based format for easy sequencing
-            double BPM = 120.0;
+            //double BPM = 120.0;
+            BPM = 120.0;
             //Combine all tracks into 1 track that is organized from lowest to highest absolute time
             if (midiFile.Tracks.Length > 1 || midiFile.Tracks[0].EndTime == 0)
                 midiFile.CombineTracks();
