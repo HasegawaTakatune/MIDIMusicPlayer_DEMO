@@ -8,15 +8,16 @@
 MIDIファイル再生DEMOです。  
   
 - 画面説明  
-![UnityMIDI_DEMO](https://user-images.githubusercontent.com/17695962/83123011-6b008900-a10f-11ea-81d5-be1de12cfd09.png)  
+![UnityMIDI_DEMO](https://user-images.githubusercontent.com/17695962/85404198-91dc9e80-b599-11ea-9bcb-77d7e4fc0405.png)  
   
 - 実行動画  
 [![UnityMIDI_DEMO_thumbnail](https://user-images.githubusercontent.com/17695962/83125754-e44dab00-a112-11ea-8109-a8b2e7dfdf6d.png)](https://twitter.com/RerykA99/status/1265940146014150656)  
   
 ## 後々やるかも？(2020/05/28)  
-MIDIファイルの管理としてエディタでは「Assets/StreamingAssets/MIDI」配下に、Androidでは  
+~~MIDIファイルの管理としてエディタでは「Assets/StreamingAssets/MIDI」配下に、Androidでは  
 「～/Android/data/アプリ名/files/MIDI」配下に置いて使っています。しかし、今はファイルを  
-自動で配置してくれる処理はありません。後で追加しないとなぁ・・・。  
+自動で配置してくれる処理はありません。後で追加しないとなぁ・・・。~~  
+Android版にてStreamingAssetsからの曲データを取得して、Application.persistentDataPathのディレクトリに曲データを移し替える処理を追加しました。以降、Androidでの手動でファイル配置しないで使うことができます。  
   
 ## 参照  
 - MIDI音源ファイル  
